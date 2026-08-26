@@ -22,6 +22,15 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-rc.1] - 2026-08-26
+
+### Changed
+
+* Release Candidate für die stabile Version `0.3.0` vorbereitet.
+* Frontend-Version auf `0.3.0-rc.1` aktualisiert.
+
+---
+
 ## [0.3.0-beta.2] - 2026-08-26
 
 ### Changed
