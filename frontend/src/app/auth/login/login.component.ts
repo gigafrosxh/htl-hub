@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { UserApiService } from '../../core/user-api.service';
@@ -15,6 +15,7 @@ export class LoginComponent {
   private readonly userApi = inject(UserApiService);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly changeDetector = inject(ChangeDetectorRef);
   email = '';
   password = '';
   isSubmitting = false;
@@ -27,11 +28,13 @@ export class LoginComponent {
       next: (response) => {
         this.authService.saveSession(response);
         this.isSubmitting = false;
+        this.changeDetector.detectChanges();
         void this.router.navigate(['/users']);
       },
       error: () => {
         this.error = 'Ungültige E-Mail oder Passwort.';
         this.isSubmitting = false;
+        this.changeDetector.detectChanges();
       },
     });
   }

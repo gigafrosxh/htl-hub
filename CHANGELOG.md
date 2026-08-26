@@ -20,6 +20,9 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 * Tailwind-CSS-Verarbeitung im Frontend ergänzt, damit Header und UI-Utilities korrekt dargestellt werden.
 * 400-Fehler bei der User-Registrierung durch fehlende DTO-Validierungsregeln behoben.
+* Backend-Startfehler durch fehlenden Export des JWT-Providers behoben.
+* Registrierung von der JWT-geschützten User-API ausgenommen.
+* UI-Aktualisierung nach asynchronen Registrierungs-, Login- und User-Requests behoben.
 
 ### Removed
 

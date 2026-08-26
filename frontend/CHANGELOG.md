@@ -75,6 +75,9 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 * Tailwind-CSS-Verarbeitung über PostCSS ergänzt.
 * Fehlenden Stylesheet-Verweis auf `styles.css` korrigiert.
 * Validierungsfehler der Registrierung werden im Formular verständlich angezeigt.
+* Frontend-Login kann wieder mit dem gestarteten Backend kommunizieren.
+* Registrierungsanfragen benötigen keinen Authentifizierungs-Token mehr.
+* Erfolgs- und Fehlermeldungen werden nach HTTP-Anfragen sofort in der Oberfläche aktualisiert.
 
 ### Removed
 

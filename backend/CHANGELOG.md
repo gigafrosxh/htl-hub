@@ -20,6 +20,9 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 * Keine Einträge.
 * DTO-Validierung für User-Erstellung und Updates ergänzt, damit gültige Requests die globale ValidationPipe passieren.
+* JWT-Provider für den Guard im `UserModule` verfügbar gemacht.
+* `POST /api/user` für neue Registrierungen öffentlich zugänglich gemacht.
+* Öffentliche Registrierung trotz geschützter User-CRUD-Routen ermöglicht.
 
 ### Removed
 
