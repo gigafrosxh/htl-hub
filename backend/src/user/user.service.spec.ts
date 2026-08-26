@@ -12,6 +12,7 @@ describe('UserService', () => {
         UserService,
         { provide: USER_REPOSITORY, useValue: {} },
         { provide: PASSWORD_REPOSITORY, useValue: {} },
+        { provide: 'HTLHUB_REPOSITORY', useValue: {} },
       ],
     }).compile();
 

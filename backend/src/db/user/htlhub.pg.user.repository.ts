@@ -7,7 +7,7 @@ import { User, UserCreateData, UserUpdateData } from './user.types';
 export class HtlhubPgUserRepository implements UserRepository {
   constructor(
     @Inject('HTLHUB_REPOSITORY')
-    private readonly database: HtlhubRepository,
+    private readonly database: Pick<HtlhubRepository, 'query'>,
   ) {}
 
   /**

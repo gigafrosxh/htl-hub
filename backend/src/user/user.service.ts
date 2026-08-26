@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { ConflictException, Inject, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 import { CreateUserDto } from './dto/create-user.dto';
@@ -9,6 +9,10 @@ import { USER_REPOSITORY } from '../db/user/user.repository';
 import { PASSWORD_REPOSITORY } from '../db/user/password.repository';
 import type { PasswordRepository } from '../db/user/password.repository';
 import type { UserRepository } from '../db/user/user.repository';
+import { HtlhubPgPasswordRepository } from '../db/user/htlhub.pg.password.repository';
+import { HtlhubPgUserRepository } from '../db/user/htlhub.pg.user.repository';
+import { HTLHUB_REPOSITORY } from '../db/db.module';
+import type { HtlhubRepository } from '../db/core/htlhub.repository';
 
 @Injectable()
 export class UserService {
@@ -18,25 +22,35 @@ export class UserService {
 
     @Inject(PASSWORD_REPOSITORY)
     private readonly passwordRepository: PasswordRepository,
+
+    @Inject(HTLHUB_REPOSITORY)
+    private readonly database: HtlhubRepository,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const createUser = await this.userRepository.createUser({
-      name: createUserDto.name,
-      email: createUserDto.email,
-    });
+    try {
+      return await this.database.withTransaction(async (transaction) => {
+        const userRepository = new HtlhubPgUserRepository(transaction);
+        const passwordRepository = new HtlhubPgPasswordRepository(transaction);
+        const createUser = await userRepository.createUser({
+          name: createUserDto.name,
+          email: createUserDto.email,
+        });
 
-    const passwordHash = await bcrypt.hash(
-      createUserDto.password,
-      12,
-    );
+        const passwordHash = await bcrypt.hash(createUserDto.password, 12);
+        await passwordRepository.createPassword({
+          user_id: createUser.id,
+          password_hash: passwordHash,
+        });
 
-    await this.passwordRepository.createPassword({
-      user_id: createUser.id,
-      password_hash: passwordHash,
-    });
-
-    return createUser;
+        return createUser;
+      });
+    } catch (error) {
+      if ((error as { code?: string }).code === '23505') {
+        throw new ConflictException('Diese E-Mail-Adresse ist bereits registriert.');
+      }
+      throw error;
+    }
   }
 
   async findAll() {
@@ -57,9 +71,16 @@ export class UserService {
     if (password) {
       const passwordHash = await bcrypt.hash(password, 12);
 
-      await this.passwordRepository.updatePassword(id, {
+      const updatedPassword = await this.passwordRepository.updatePassword(id, {
         password_hash: passwordHash,
       });
+
+      if (!updatedPassword) {
+        await this.passwordRepository.createPassword({
+          user_id: id,
+          password_hash: passwordHash,
+        });
+      }
     }
 
     return this.userRepository.findUserById(id);

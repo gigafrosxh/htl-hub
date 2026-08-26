@@ -21,6 +21,32 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## HTL Hub Backend
+
+Das Backend stellt eine modulare NestJS-API mit PostgreSQL, User-Verwaltung und
+JWT-Authentifizierung bereit.
+
+## Configuration
+
+```bash
+cp .env.example .env
+```
+
+`JWT_SECRET` muss in einer echten Umgebung durch ein langes, zufälliges Secret
+ersetzt werden. Die `.env`-Datei darf nicht committed werden.
+
+## Database
+
+Führe `src/db/migrations/001_create_users.sql` in der konfigurierten PostgreSQL-
+Datenbank aus. Die Registrierung legt User und Passwort-Hash innerhalb einer
+gemeinsamen Transaktion an.
+
+## API
+
+* `POST /api/auth/login` erstellt nach erfolgreicher Prüfung einen JWT.
+* `POST /api/user` registriert einen User ohne Token.
+* Die übrigen User-Endpunkte benötigen `Authorization: Bearer <token>`.
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.

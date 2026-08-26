@@ -11,7 +11,7 @@ import {
 export class HtlhubPgPasswordRepository implements PasswordRepository {
   constructor(
     @Inject('HTLHUB_REPOSITORY')
-    private readonly database: HtlhubRepository,
+    private readonly database: Pick<HtlhubRepository, 'query'>,
   ) {}
 
   /**

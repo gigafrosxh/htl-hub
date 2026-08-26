@@ -15,9 +15,13 @@ export class AuthService {
     return Boolean(localStorage.getItem('access_token'));
   }
 
-  logout(): void {
+  clearSession(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('current_user');
+  }
+
+  logout(): void {
+    this.clearSession();
     void this.router.navigate(['/login']);
   }
 }

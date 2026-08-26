@@ -16,6 +16,7 @@ describe('UserController', () => {
         UserService,
         { provide: USER_REPOSITORY, useValue: {} },
         { provide: PASSWORD_REPOSITORY, useValue: {} },
+        { provide: 'HTLHUB_REPOSITORY', useValue: {} },
         { provide: JwtAuthGuard, useValue: { canActivate: () => true } },
         { provide: JwtService, useValue: { verifyAsync: jest.fn() } },
       ],

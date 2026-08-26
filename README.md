@@ -2,6 +2,53 @@
 
 > Ein zentrales Tool für Organisation, Lernen, Navigation, Programmieren und den alltäglichen Schulbetrieb eines HTL-Schülers.
 
+## Aktueller Entwicklungsstand
+
+Die aktuelle Version `0.3.0-alpha.4` enthält eine modulare NestJS-API und ein Angular-Frontend.
+Die User-Verwaltung ist durch JWT-Authentifizierung geschützt. Registrierung und
+Login sind öffentlich erreichbar; alle weiteren User-Aktionen benötigen einen
+Bearer-Token.
+
+### Backend starten
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run start:dev
+```
+
+Die Datenbanktabellen werden mit
+`backend/src/db/migrations/001_create_users.sql` angelegt.
+
+### Frontend starten
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Die Frontend-API-Adresse wird in `frontend/src/app/core/app-config.ts` gesetzt.
+
+### Aktuelle API
+
+| Methode | Endpunkt | Authentifizierung |
+| --- | --- | --- |
+| POST | `/api/auth/login` | Nein |
+| POST | `/api/user` | Nein |
+| GET | `/api/user` | Bearer-Token |
+| GET | `/api/user/:id` | Bearer-Token |
+| PATCH | `/api/user/:id` | Bearer-Token |
+| DELETE | `/api/user/:id` | Bearer-Token |
+| GET | `/api/health` | Nein |
+
+Nach einem erfolgreichen Login wird der JWT als `access_token` gespeichert und
+automatisch an geschützte API-Anfragen angehängt. Ein ungültiger oder abgelaufener
+Token beendet die lokale Session und leitet zum Login zurück.
+
+Swagger ist unter `http://localhost:3000/api/docs` verfügbar.
+
 ## 1. Projektidee
 
 Das **HTL Multi-Tool** soll eine Webanwendung werden, welche mehrere Funktionen kombiniert, die Schüler im täglichen Schulalltag benötigen.

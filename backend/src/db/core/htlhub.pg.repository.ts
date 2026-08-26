@@ -1,5 +1,5 @@
 import { Inject, Injectable, OnModuleDestroy } from '@nestjs/common';
-import { Pool, QueryResult, QueryResultRow } from 'pg';
+import { Pool, PoolClient, QueryResult, QueryResultRow } from 'pg';
 import type { HtlhubRepository } from './htlhub.repository';
 
 export const HTLHUB_PG_POOL = 'HTLHUB_PG_POOL';
@@ -28,6 +28,32 @@ export class HtlhubPgRepository implements HtlhubRepository, OnModuleDestroy {
   }
 
   /**
+   * Runs the callback inside a PostgreSQL transaction.
+   *
+   * The transaction is committed only when the callback resolves. Any error
+   * rolls all operations back before being passed to the caller.
+   */
+  async withTransaction<T>(
+    callback: (
+      database: Pick<HtlhubRepository, 'query'>,
+    ) => Promise<T>,
+  ): Promise<T> {
+    const client = await this.pool.connect();
+
+    try {
+      await client.query('BEGIN');
+      const result = await callback(new TransactionRepository(client));
+      await client.query('COMMIT');
+      return result;
+    } catch (error) {
+      await client.query('ROLLBACK');
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+
+  /**
    * Closes every connection in the pool when NestJS shuts down.
    *
    * This prevents open database handles from keeping the Node.js process alive
@@ -35,5 +61,16 @@ export class HtlhubPgRepository implements HtlhubRepository, OnModuleDestroy {
    */
   async onModuleDestroy(): Promise<void> {
     await this.pool.end();
+  }
+}
+
+class TransactionRepository implements Pick<HtlhubRepository, 'query'> {
+  constructor(private readonly client: PoolClient) {}
+
+  query<T extends QueryResultRow = QueryResultRow>(
+    text: string,
+    values?: readonly unknown[],
+  ): Promise<QueryResult<T>> {
+    return this.client.query<T>(text, values ? [...values] : undefined);
   }
 }

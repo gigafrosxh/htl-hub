@@ -22,6 +22,30 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-alpha.5] - 2026-08-26
+
+### Added
+
+* Zentrale API-Konfiguration ergänzt.
+* Automatisches Ausloggen bei `401 Unauthorized` hinzugefügt.
+* Erfolgreiche Registrierung leitet zur Login-Seite weiter.
+
+### Changed
+
+* Frontend-Dokumentation um Login, Session und API-Konfiguration erweitert.
+* Frontend-Version auf `0.3.0-alpha.5` aktualisiert.
+
+---
+
+## [0.3.0-alpha.4] - 2026-08-26
+
+### Fixed
+
+* UI-Status nach asynchronen Registrierungs-, Login- und User-Requests aktualisiert.
+* Registrierungsanfragen benötigen keinen Authentifizierungs-Token.
+
+---
+
 ## [0.3.0-alpha.3] - 2026-08-26
 
 ### Added

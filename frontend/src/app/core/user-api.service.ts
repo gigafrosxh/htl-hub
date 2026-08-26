@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { appConfig } from './app-config';
 
 export interface User {
   id: number;
@@ -24,11 +25,11 @@ export interface LoginResponse {
 @Injectable({ providedIn: 'root' })
 export class UserApiService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'http://localhost:3000/api/user';
+  private readonly baseUrl = `${appConfig.apiUrl}/user`;
 
   createUser(payload: UserPayload): Observable<User> { return this.http.post<User>(this.baseUrl, payload); }
   login(payload: Pick<UserPayload, 'email' | 'password'>): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>('http://localhost:3000/api/auth/login', payload);
+    return this.http.post<LoginResponse>(`${appConfig.apiUrl}/auth/login`, payload);
   }
   findUsers(): Observable<User[]> { return this.http.get<User[]>(this.baseUrl); }
   findUser(id: number): Observable<User> { return this.http.get<User>(`${this.baseUrl}/${id}`); }

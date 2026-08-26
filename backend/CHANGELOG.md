@@ -28,6 +28,23 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-alpha.5] - 2026-08-26
+
+### Added
+
+* Transaktionsunterstützung für atomare Datenbankoperationen ergänzt.
+* `.env.example` mit sicheren Platzhaltern für lokale Konfiguration hinzugefügt.
+* Doppelte E-Mail-Adressen als `409 Conflict` behandelt.
+* Fehlende Passwortdatensätze bei Passwortänderungen automatisch angelegt.
+
+### Changed
+
+* Registrierung schreibt User und Passwort-Hash innerhalb einer Transaktion.
+* Backend-Version auf `0.3.0-alpha.5` aktualisiert.
+* Backend- und Frontend-Dokumentation um Auth- und Datenbank-Setup erweitert.
+
+---
+
 ## [0.3.0-alpha.3] - 2026-08-26
 
 ### Added
@@ -38,7 +55,17 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ### Changed
 
-* Backend-Version auf `0.3.0-alpha.3` aktualisiert.
+* Backend-Version auf `0.3.0-alpha.5` aktualisiert.
+
+---
+
+## [0.3.0-alpha.4] - 2026-08-26
+
+### Fixed
+
+* JWT-Provider-Export im AuthModule korrigiert.
+* `POST /api/user` für neue Registrierungen öffentlich zugänglich gemacht.
+* Start- und Routing-Probleme der geschützten User-API behoben.
 
 ---
 

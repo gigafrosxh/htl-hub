@@ -2,6 +2,15 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.21.
 
+## HTL Hub Frontend
+
+Das Angular-Frontend bietet Login, Registrierung und eine geschützte User-
+Verwaltung. Die API-Adresse kann in `src/app/core/app-config.ts` angepasst werden.
+
+Nach dem Login wird der JWT automatisch über einen HTTP-Interceptor gesendet.
+Bei `401 Unauthorized` wird die lokale Session gelöscht und zur Login-Seite
+weitergeleitet.
+
 ## Development server
 
 To start a local development server, run:

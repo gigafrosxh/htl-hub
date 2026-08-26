@@ -28,6 +28,35 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-alpha.5] - 2026-08-26
+
+### Added
+
+* Transaktionale Registrierung für User und Passwort-Hash ergänzt.
+* `.env.example` ohne echte Zugangsdaten hinzugefügt.
+* Zentrale Frontend-API-Konfiguration ergänzt.
+* Automatische Behandlung ungültiger JWT-Sessions hinzugefügt.
+* Doppelte E-Mail-Adressen werden als `409 Conflict` zurückgegeben.
+* Fehlende Passwortdatensätze werden bei Passwortänderungen angelegt.
+
+### Changed
+
+* Frontend dokumentiert den Authentifizierungs- und API-Flow ausführlicher.
+* Erfolgreiche Registrierung leitet zur Login-Seite weiter.
+* Backend- und Frontend-Version auf `0.3.0-alpha.5` aktualisiert
+
+---
+
+## [0.3.0-alpha.4] - 2026-08-26
+
+### Fixed
+
+* UI-Status nach asynchronen Registrierungs-, Login- und User-Requests aktualisiert.
+* Registrierung bleibt öffentlich, während User-CRUD-Routen geschützt sind.
+* JWT-Provider-Export im AuthModule korrigiert.
+
+---
+
 ## [0.3.0-alpha.3] - 2026-08-26
 
 ### Added
