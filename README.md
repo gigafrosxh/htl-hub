@@ -4,7 +4,7 @@
 
 ## Aktueller Entwicklungsstand
 
-Die aktuelle Version `0.3.1` enthält eine modulare NestJS-API und ein Angular-Frontend.
+Die aktuelle Version `0.3.2` enthält eine modulare NestJS-API und ein Angular-Frontend.
 Die User-Verwaltung ist durch JWT-Authentifizierung geschützt. Registrierung und
 Login sind öffentlich erreichbar; alle weiteren User-Aktionen benötigen einen
 Bearer-Token.
@@ -48,6 +48,21 @@ automatisch an geschützte API-Anfragen angehängt. Ein ungültiger oder abgelau
 Token beendet die lokale Session und leitet zum Login zurück.
 
 Swagger ist unter `http://localhost:3000/api/docs` verfügbar.
+
+### Releases
+
+Jede Codeänderung erhält eine eigene, synchronisierte Version in Frontend,
+Backend und API-Konfiguration. Ein Push auf `main` startet den Release-Workflow:
+
+1. Versionen und Changelog prüfen
+2. Frontend und Backend installieren, bauen und testen
+3. passenden Git-Tag erstellen
+4. GitHub-Release veröffentlichen
+
+Stabile Versionen werden als Latest Release veröffentlicht. Versionen mit
+`alpha`, `beta` oder `rc` werden als Pre-release markiert. Neue Features werden
+vor der Umsetzung in einem eigenen GitHub-Issue beschrieben und durch
+`Closes #<Nummer>` im Release-Commit geschlossen.
 
 ## 1. Projektidee
 

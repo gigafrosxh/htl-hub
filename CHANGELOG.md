@@ -28,6 +28,19 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.2] - 2026-08-26
+
+### Added
+
+* Automatischen GitHub-Workflow für getestete, versionierte Stable- und Pre-releases ergänzt.
+* Versions- und Changelog-Prüfung vor der Veröffentlichung hinzugefügt.
+
+### Changed
+
+* Backend- und Frontend-Version auf `0.3.2` aktualisiert.
+
+---
+
 ## [0.3.1] - 2026-08-26
 
 ### Fixed

@@ -1,0 +1,120 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Test and release
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+
+      - name: Validate release version
+        id: version
+        shell: bash
+        run: |
+          backend_version="$(node -p "require('./backend/package.json').version")"
+          frontend_version="$(node -p "require('./frontend/package.json').version")"
+          app_version="$(sed -n "s/.*version: '\([^']*\)'.*/\1/p" backend/src/config/app.config.ts)"
+
+          if ! [[ "$backend_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-(alpha|beta|rc)\.[1-9][0-9]*)?$ ]]; then
+            echo "Unsupported semantic version: $backend_version" >&2
+            exit 1
+          fi
+
+          if [[ "$frontend_version" != "$backend_version" || "$app_version" != "$backend_version" ]]; then
+            echo "Version mismatch: backend=$backend_version frontend=$frontend_version app=$app_version" >&2
+            exit 1
+          fi
+
+          if ! grep -Fq "## [$backend_version]" CHANGELOG.md; then
+            echo "CHANGELOG.md has no release section for $backend_version" >&2
+            exit 1
+          fi
+
+          tag="v$backend_version"
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null 2>&1; then
+            echo "Tag $tag already exists" >&2
+            exit 1
+          fi
+
+          if [[ "$backend_version" == *-* ]]; then
+            prerelease=true
+          else
+            prerelease=false
+          fi
+
+          {
+            echo "version=$backend_version"
+            echo "tag=$tag"
+            echo "prerelease=$prerelease"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Install backend dependencies
+        run: npm ci --prefix backend
+
+      - name: Install frontend dependencies
+        run: npm ci --prefix frontend
+
+      - name: Build backend
+        run: npm run build --prefix backend
+
+      - name: Test backend
+        run: npm test --prefix backend -- --runInBand
+
+      - name: Test backend end to end
+        run: npm run test:e2e --prefix backend -- --runInBand
+
+      - name: Build frontend
+        run: npm run build --prefix frontend
+
+      - name: Test frontend
+        run: npm test --prefix frontend -- --watch=false
+
+      - name: Publish stable release
+        if: steps.version.outputs.prerelease == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --target "$GITHUB_SHA" \
+            --title "HTL Hub $RELEASE_TAG" \
+            --generate-notes \
+            --latest
+
+      - name: Publish pre-release
+        if: steps.version.outputs.prerelease == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --target "$GITHUB_SHA" \
+            --title "HTL Hub $RELEASE_TAG" \
+            --generate-notes \
+            --prerelease
