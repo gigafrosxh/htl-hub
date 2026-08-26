@@ -16,12 +16,20 @@ export interface UserPayload {
   password?: string;
 }
 
+export interface LoginResponse {
+  access_token: string;
+  user: User;
+}
+
 @Injectable({ providedIn: 'root' })
 export class UserApiService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = 'http://localhost:3000/api/user';
 
   createUser(payload: UserPayload): Observable<User> { return this.http.post<User>(this.baseUrl, payload); }
+  login(payload: Pick<UserPayload, 'email' | 'password'>): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>('http://localhost:3000/api/auth/login', payload);
+  }
   findUsers(): Observable<User[]> { return this.http.get<User[]>(this.baseUrl); }
   findUser(id: number): Observable<User> { return this.http.get<User>(`${this.baseUrl}/${id}`); }
   updateUser(id: number, payload: Partial<UserPayload>): Observable<User> { return this.http.patch<User>(`${this.baseUrl}/${id}`, payload); }

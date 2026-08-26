@@ -15,10 +15,10 @@
       <label class="block text-sm font-bold text-slate-700">Password
         <input [(ngModel)]="password" name="password" type="password" required placeholder="••••••••" class="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-lime-500 focus:ring-4 focus:ring-lime-100" />
       </label>
-      @if (submitted) {
-        <p class="rounded-lg bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">Login API wird im Backend noch ergänzt.</p>
+      @if (error) {
+        <p class="rounded-lg bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{{ error }}</p>
       }
-      <button type="submit" class="w-full rounded-lg bg-slate-950 px-4 py-3.5 font-black text-white transition hover:bg-slate-800">Sign in</button>
+      <button type="submit" [disabled]="isSubmitting" class="w-full rounded-lg bg-slate-950 px-4 py-3.5 font-black text-white transition hover:bg-slate-800 disabled:opacity-60">{{ isSubmitting ? 'Signing in...' : 'Sign in' }}</button>
     </form>
     <p class="mt-7 text-center text-sm text-slate-500">Noch kein Konto? <a routerLink="/register" class="font-black text-slate-950 underline decoration-lime-400 decoration-2 underline-offset-4">Registrieren</a></p>
   </div>

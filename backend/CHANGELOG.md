@@ -4,6 +4,10 @@ Alle wichtigen Änderungen am HTL-Hub-Backend werden in dieser Datei dokumentier
 
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/) und dieses Projekt verwendet [Semantic Versioning](https://semver.org/).
 
+Die Release-Reihenfolge für eine neue Version lautet: `alpha.1`, `alpha.2`, ...,
+`beta.1`, `beta.2`, ..., `rc.1`, `rc.2`, ..., stabile Version, danach bei
+Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
+
 ## [Unreleased]
 
 ### Added
@@ -21,7 +25,21 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/) 
 
 ---
 
-## [0.2.1] - 2026-08-26
+## [0.3.0-alpha.2] - 2026-08-26
+
+### Added
+
+* Login-Endpunkt unter `POST /api/auth/login` ergänzt.
+* Passwortprüfung mit bcrypt und signierte JWT-Access-Tokens hinzugefügt.
+* User-Suche per E-Mail im Repository ergänzt.
+
+### Changed
+
+* Backend-Version auf `0.3.0-alpha.2` aktualisiert.
+
+---
+
+## [0.3.0-alpha.1] - 2026-08-26
 
 ### Changed
 

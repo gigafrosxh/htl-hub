@@ -73,6 +73,25 @@ export class HtlhubPgUserRepository implements UserRepository {
   }
 
   /**
+   * Loads a user by email address for authentication lookups.
+   *
+   * @param email The email address to search for.
+   * @returns The matching user, or `null` when no account exists.
+   */
+  async findUserByEmail(email: string): Promise<User | null> {
+    const result = await this.database.query<User>(
+      `
+        SELECT id, name, email, created_at, updated_at
+        FROM users
+        WHERE email = $1
+      `,
+      [email],
+    );
+
+    return result.rows[0] ?? null;
+  }
+
+  /**
    * Updates the supplied fields of an existing user.
    *
    * Only defined properties are written, so callers can update the name,

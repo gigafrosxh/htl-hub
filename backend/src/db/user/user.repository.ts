@@ -9,6 +9,8 @@ export interface UserRepository {
   findAllUsers(): Promise<User[]>;
   /** Finds a user by primary key, or returns `null` when absent. */
   findUserById(id: number): Promise<User | null>;
+  /** Finds a user by email address, or returns `null` when absent. */
+  findUserByEmail(email: string): Promise<User | null>;
   /** Updates defined user fields and returns the result, or `null` when absent. */
   updateUser(id: number, user: UserUpdateData): Promise<User | null>;
   /** Deletes a user by ID and relies on the database cascade for its password. */
