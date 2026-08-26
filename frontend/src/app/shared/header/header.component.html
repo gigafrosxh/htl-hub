@@ -14,6 +14,10 @@
       <a routerLink="/register" routerLinkActive="bg-slate-100 text-slate-950" class="rounded-lg px-4 py-2 text-sm font-bold text-slate-500 transition hover:bg-slate-50 hover:text-slate-950">Register</a>
     </nav>
 
-    <a routerLink="/register" class="rounded-lg bg-lime-300 px-4 py-2.5 text-sm font-black text-slate-950 shadow-sm transition hover:bg-lime-200">Get started <span aria-hidden="true">↗</span></a>
+    @if (authService.isAuthenticated()) {
+      <button type="button" (click)="authService.logout()" class="rounded-lg bg-slate-950 px-4 py-2.5 text-sm font-black text-white shadow-sm transition hover:bg-slate-800">Log out</button>
+    } @else {
+      <a routerLink="/register" class="rounded-lg bg-lime-300 px-4 py-2.5 text-sm font-black text-slate-950 shadow-sm transition hover:bg-lime-200">Get started <span aria-hidden="true">↗</span></a>
+    }
   </div>
 </header>
