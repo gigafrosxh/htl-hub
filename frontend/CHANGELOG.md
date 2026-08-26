@@ -22,6 +22,23 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.4.0-alpha.1] - 2026-08-26
+
+### Added
+
+* Responsive App-Shell mit Desktop-Sidebar und mobilem Navigations-Drawer ergänzt.
+* Alle geplanten Module über klar benannte, geschützte Routen angebunden.
+* Roadmap-Seite für noch nicht implementierte Module hinzugefügt.
+* Komponententests für Navigation und mobilen Drawer ergänzt.
+
+### Changed
+
+* Aktiven Navigationspunkt visuell und mit `aria-current` hervorgehoben.
+* Öffentliche Authentifizierungsseiten vom geschützten App-Layout getrennt.
+* Frontend-Version auf `0.4.0-alpha.1` aktualisiert.
+
+---
+
 ## [0.3.2] - 2026-08-26
 
 ### Changed
