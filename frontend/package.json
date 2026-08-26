@@ -1,6 +1,6 @@
 {
   "name": "htl-hub-frontend",
-  "version": "0.3.0-alpha.5",
+  "version": "0.3.0-beta.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -28,6 +28,20 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-beta.1] - 2026-08-26
+
+### Added
+
+* AuthService-Tests für erfolgreiche und fehlgeschlagene Logins ergänzt.
+* JWT-Guard-Tests für gültige und ungültige Tokens ergänzt.
+
+### Changed
+
+* Backend- und Frontend-Version auf `0.3.0-beta.1` aktualisiert.
+* Die Authentifizierungsabdeckung vor dem Beta-Release erweitert.
+
+---
+
 ## [0.3.0-alpha.5] - 2026-08-26
 
 ### Added

@@ -28,6 +28,19 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-beta.1] - 2026-08-26
+
+### Added
+
+* AuthService-Tests für gültige Zugangsdaten, unbekannte E-Mail-Adressen und falsche Passwörter ergänzt.
+* JWT-Guard-Tests für gültige, fehlende und ungültige Tokens ergänzt.
+
+### Changed
+
+* Backend-Version auf `0.3.0-beta.1` aktualisiert.
+
+---
+
 ## [0.3.0-alpha.5] - 2026-08-26
 
 ### Added
