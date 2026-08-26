@@ -28,6 +28,22 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.4.0-alpha.1] - 2026-08-26
+
+### Added
+
+* Responsive App-Shell mit Desktop-Sidebar und mobilem Navigations-Drawer ergänzt.
+* Klar benannte Routen und vorbereitete Einstiegsseiten für alle geplanten HTL-Hub-Module hinzugefügt.
+* Tests für Modulnavigation und mobiles Öffnen beziehungsweise Schließen der Sidebar ergänzt.
+
+### Changed
+
+* Aktive Navigationspunkte werden sichtbar und barrierefrei hervorgehoben.
+* Login und Registrierung vom geschützten Workspace-Layout getrennt.
+* Backend- und Frontend-Version auf `0.4.0-alpha.1` aktualisiert.
+
+---
+
 ## [0.3.2] - 2026-08-26
 
 ### Added

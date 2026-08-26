@@ -1,20 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
-@import "tailwindcss-primeui";
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
 
 :root {
-	font-family: 'DM Sans', 'Segoe UI', sans-serif;
-	color: #172033;
-	background: #f4f7fb;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #172033;
+  background: #f4f7fb;
 }
 
 body {
-	margin: 0;
-	min-width: 320px;
-	background: #f4f7fb;
+  margin: 0;
+  min-width: 320px;
+  background: #f4f7fb;
 }
 
 button,
-input {
-	font: inherit;
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #a3e635;
+  outline-offset: 2px;
 }

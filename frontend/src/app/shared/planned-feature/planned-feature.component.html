@@ -1,0 +1,25 @@
+<section class="mx-auto max-w-7xl px-5 py-10 sm:px-6 sm:py-14 lg:px-8">
+  <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+    <div class="relative isolate px-6 py-12 sm:px-10 sm:py-16">
+      <div
+        class="absolute -right-20 -top-24 -z-10 h-72 w-72 rounded-full bg-lime-200/60 blur-3xl"
+        aria-hidden="true"
+      ></div>
+      <p class="mb-4 text-xs font-black uppercase tracking-[0.26em] text-lime-600">
+        Phase {{ feature().phase }}
+      </p>
+      <h1 class="max-w-3xl text-4xl font-black tracking-[-0.04em] text-slate-950 sm:text-6xl">
+        {{ feature().title }}
+      </h1>
+      <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500 sm:text-lg">
+        {{ feature().description }}
+      </p>
+      <div
+        class="mt-9 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-bold text-slate-600"
+      >
+        <span class="h-2 w-2 rounded-full bg-amber-400" aria-hidden="true"></span>
+        In der Roadmap eingeplant
+      </div>
+    </div>
+  </div>
+</section>

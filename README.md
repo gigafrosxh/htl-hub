@@ -4,7 +4,7 @@
 
 ## Aktueller Entwicklungsstand
 
-Die aktuelle Version `0.3.2` enthält eine modulare NestJS-API und ein Angular-Frontend.
+Die aktuelle Version `0.4.0-alpha.1` enthält eine modulare NestJS-API und ein Angular-Frontend.
 Die User-Verwaltung ist durch JWT-Authentifizierung geschützt. Registrierung und
 Login sind öffentlich erreichbar; alle weiteren User-Aktionen benötigen einen
 Bearer-Token.
@@ -48,6 +48,9 @@ automatisch an geschützte API-Anfragen angehängt. Ein ungültiger oder abgelau
 Token beendet die lokale Session und leitet zum Login zurück.
 
 Swagger ist unter `http://localhost:3000/api/docs` verfügbar.
+
+Die geschützte Anwendung verwendet eine responsive App-Shell mit mobiler Sidebar,
+aktiver Routenmarkierung und vorbereiteten Einstiegen für alle geplanten Module.
 
 ### Releases
 

@@ -28,6 +28,14 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.4.0-alpha.1] - 2026-08-26
+
+### Changed
+
+* Backend-Version mit dem ersten `0.4.0`-Alpha-Release auf `0.4.0-alpha.1` synchronisiert.
+
+---
+
 ## [0.3.2] - 2026-08-26
 
 ### Changed
