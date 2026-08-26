@@ -22,6 +22,14 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.1] - 2026-08-26
+
+### Changed
+
+* Frontend-Version mit dem Patch-Release des Gesamtprojekts auf `0.3.1` synchronisiert.
+
+---
+
 ## [0.3.0] - 2026-08-26
 
 ### Changed

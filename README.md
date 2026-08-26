@@ -4,7 +4,7 @@
 
 ## Aktueller Entwicklungsstand
 
-Die aktuelle Version `0.3.0` enthält eine modulare NestJS-API und ein Angular-Frontend.
+Die aktuelle Version `0.3.1` enthält eine modulare NestJS-API und ein Angular-Frontend.
 Die User-Verwaltung ist durch JWT-Authentifizierung geschützt. Registrierung und
 Login sind öffentlich erreichbar; alle weiteren User-Aktionen benötigen einen
 Bearer-Token.

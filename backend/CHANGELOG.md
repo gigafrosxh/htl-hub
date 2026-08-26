@@ -28,6 +28,18 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.1] - 2026-08-26
+
+### Fixed
+
+* E2E-Test auf `GET /api/health` aktualisiert und den Datenbank-Pool für einen reproduzierbaren Teststart isoliert.
+
+### Changed
+
+* Backend-Version auf `0.3.1` aktualisiert.
+
+---
+
 ## [0.3.0] - 2026-08-26
 
 ### Changed

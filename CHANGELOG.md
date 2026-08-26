@@ -28,6 +28,18 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.1] - 2026-08-26
+
+### Fixed
+
+* Backend-E2E-Test auf den realen Health-Endpunkt umgestellt und von lokalen PostgreSQL-Zugangsdaten entkoppelt.
+
+### Changed
+
+* Backend- und Frontend-Version auf `0.3.1` aktualisiert.
+
+---
+
 ## [0.3.0] - 2026-08-26
 
 ### Changed
