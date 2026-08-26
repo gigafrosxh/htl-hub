@@ -41,6 +41,7 @@ async function bootstrap() {
     .setTitle('HTL Hub API')
     .setDescription('API for the HTL Hub Multi tool')
     .setVersion(configService.getOrThrow<string>('app.version'))
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

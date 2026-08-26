@@ -22,11 +22,20 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-beta.2] - 2026-08-26
+
+### Changed
+
+* Frontend-Version auf `0.3.0-beta.2` aktualisiert.
+* API- und Authentifizierungsdokumentation erweitert.
+
+---
+
 ## [0.3.0-beta.1] - 2026-08-26
 
 ### Changed
 
-* Frontend-Version auf `0.3.0-beta.1` aktualisiert.
+* Frontend-Version auf `0.3.0-beta.2` aktualisiert.
 * Beta-Release basiert auf einem vollständig getesteten Authentifizierungs-Backend.
 
 ---

@@ -28,6 +28,20 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-beta.2] - 2026-08-26
+
+### Added
+
+* Login-Rate-Limiting mit maximal fünf Versuchen pro Minute ergänzt.
+* Swagger-Dekoratoren für Auth- und geschützte User-Endpunkte ergänzt.
+* Bearer-Authentifizierung in Swagger dokumentiert.
+
+### Changed
+
+* Backend-Version auf `0.3.0-beta.2` aktualisiert.
+
+---
+
 ## [0.3.0-beta.1] - 2026-08-26
 
 ### Added
@@ -37,7 +51,7 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ### Changed
 
-* Backend-Version auf `0.3.0-beta.1` aktualisiert.
+* Backend-Version auf `0.3.0-beta.2` aktualisiert.
 
 ---
 

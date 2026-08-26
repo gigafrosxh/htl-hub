@@ -28,6 +28,19 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ---
 
+## [0.3.0-beta.2] - 2026-08-26
+
+### Added
+
+* Rate-Limiting für Login-Versuche ergänzt.
+* Swagger-Sicherheitsdokumentation für JWT-geschützte Routen ergänzt.
+
+### Changed
+
+* Authentifizierungs- und API-Dokumentation erweitert.
+
+---
+
 ## [0.3.0-beta.1] - 2026-08-26
 
 ### Added
@@ -37,7 +50,7 @@ Bugfixes eine Patch-Version und bei neuen Features eine neue Minor-Version.
 
 ### Changed
 
-* Backend- und Frontend-Version auf `0.3.0-beta.1` aktualisiert.
+* Backend- und Frontend-Version auf `0.3.0-beta.2` aktualisiert.
 * Die Authentifizierungsabdeckung vor dem Beta-Release erweitert.
 
 ---
