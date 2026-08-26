@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Pool } from 'pg';
 import {
-  HtlhubPgRepositry,
+  HtlhubPgRepository,
   HTLHUB_PG_POOL,
-} from './core/htlhub.pg.repositry';
-import { HtlhubPgUserRepositry } from './user/htlhub.pg.user.repositry';
+} from './core/htlhub.pg.repository';
+import { HtlhubPgUserRepository } from './user/htlhub.pg.user.repository';
 import { USER_REPOSITORY } from './user/user.repository';
-import { HtlhubPgPasswordRepositry } from './user/htlhub.pg.password.repositry';
+import { HtlhubPgPasswordRepository } from './user/htlhub.pg.password.repository';
 import { PASSWORD_REPOSITORY } from './user/password.repository';
 import { DbService } from './core/db.service';
 
@@ -27,20 +27,20 @@ export const HTLHUB_REPOSITORY = 'HTLHUB_REPOSITORY';
           password: configService.getOrThrow<string>('DB_PASSWORD'),
         }),
     },
-    HtlhubPgRepositry,
+    HtlhubPgRepository,
     {
       provide: HTLHUB_REPOSITORY,
-      useExisting: HtlhubPgRepositry,
+      useExisting: HtlhubPgRepository,
     },
-    HtlhubPgUserRepositry,
+    HtlhubPgUserRepository,
     {
       provide: USER_REPOSITORY,
-      useExisting: HtlhubPgUserRepositry,
+      useExisting: HtlhubPgUserRepository,
     },
-    HtlhubPgPasswordRepositry,
+    HtlhubPgPasswordRepository,
     {
       provide: PASSWORD_REPOSITORY,
-      useExisting: HtlhubPgPasswordRepositry,
+      useExisting: HtlhubPgPasswordRepository,
     },
     DbService,
   ],

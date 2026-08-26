@@ -8,7 +8,7 @@ import {
 } from './password.types';
 
 @Injectable()
-export class HtlhubPgPasswordRepositry implements PasswordRepository {
+export class HtlhubPgPasswordRepository implements PasswordRepository {
   constructor(
     @Inject('HTLHUB_REPOSITORY')
     private readonly database: HtlhubRepository,

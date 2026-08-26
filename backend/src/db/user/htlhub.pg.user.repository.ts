@@ -4,7 +4,7 @@ import { UserRepository } from './user.repository';
 import { User, UserCreateData, UserUpdateData } from './user.types';
 
 @Injectable()
-export class HtlhubPgUserRepositry implements UserRepository {
+export class HtlhubPgUserRepository implements UserRepository {
   constructor(
     @Inject('HTLHUB_REPOSITORY')
     private readonly database: HtlhubRepository,

@@ -1,11 +1,11 @@
 import { Inject, Injectable, OnModuleDestroy } from '@nestjs/common';
 import { Pool, QueryResult, QueryResultRow } from 'pg';
-import { HtlhubRepository } from './htlhub.repository';
+import type { HtlhubRepository } from './htlhub.repository';
 
 export const HTLHUB_PG_POOL = 'HTLHUB_PG_POOL';
 
 @Injectable()
-export class HtlhubPgRepositry implements HtlhubRepository, OnModuleDestroy {
+export class HtlhubPgRepository implements HtlhubRepository, OnModuleDestroy {
   constructor(@Inject(HTLHUB_PG_POOL) private readonly pool: Pool) {}
 
   /**
