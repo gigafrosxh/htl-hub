@@ -1,0 +1,77 @@
+# Changelog
+
+Alle wichtigen Änderungen am HTL-Hub-Projekt werden in dieser Datei dokumentiert.
+
+Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/) und dieses Projekt verwendet [Semantic Versioning](https://semver.org/).
+
+## [Unreleased]
+
+### Added
+
+### Changed
+
+* Backend-CORS für konfigurierbare Origins und lokale Frontend-Entwicklung robust gemacht.
+
+### Fixed
+
+* Tailwind-CSS-Verarbeitung im Frontend ergänzt, damit Header und UI-Utilities korrekt dargestellt werden.
+* 400-Fehler bei der User-Registrierung durch fehlende DTO-Validierungsregeln behoben.
+
+### Removed
+
+---
+
+## [0.3.0] - 2026-08-26
+
+### Added
+
+* Globale Versionskonfiguration im Backend ergänzt.
+* Frontend-Shell mit Header, Navigation sowie Login- und Registrierungsansichten begonnen.
+* User-Verwaltungsoberfläche für das Laden, Suchen, Aktualisieren und Löschen von Benutzern ergänzt.
+* Zentrale Frontend-API-Anbindung für die User-Endpunkte hinzugefügt.
+* Tailwind CSS und PrimeNG für die Frontend-Oberfläche eingerichtet.
+
+### Changed
+
+* Backend-Struktur in Config-, Core-, User-, Health- und Migrationsbereiche gegliedert.
+* PostgreSQL- und Repository-Dateien in eigene Unterordner verschoben.
+* Backend-Module über `AppModule`, `HealthModule`, `UserModule` und `DbModule` verdrahtet.
+
+### Removed
+
+* Nicht verwendete generierte App- und Entity-Dateien aus dem Backend entfernt.
+
+---
+
+## [0.2.0] - 2026-08-26
+
+### Added
+
+* User-Management-Modul für Benutzer und Passwörter hinzugefügt.
+* User-Erstellung mit Passwort-Hashing implementiert.
+* PostgreSQL-Integration mit Repository-Pattern für den Datenzugriff eingeführt.
+* DTOs für die Erstellung und Aktualisierung von Benutzern erstellt.
+* Health-Check-Endpunkt für den Anwendungsstatus hinzugefügt.
+* Swagger-Dokumentation für die API-Endpunkte eingerichtet.
+* Globale Validierung und CORS für das Backend konfiguriert.
+
+### Changed
+
+* Backend in eine modulare Architektur aufgeteilt.
+* Datenbankzugriff über Repository-Interfaces und PostgreSQL-Implementierungen strukturiert.
+
+### Removed
+
+* Nicht verwendeten `AppController` und `AppService` entfernt.
+
+---
+
+## [0.1.0] - 2026-08-26
+
+### Added
+
+* Initiales Projektsetup erstellt.
+* Angular-Frontend initialisiert.
+* NestJS-Backend initialisiert.
+* Grundlegende Frontend- und Backend-Projektstruktur erstellt.
+* Projektkonzept und Brainstorming in der [README](./README.md) dokumentiert.

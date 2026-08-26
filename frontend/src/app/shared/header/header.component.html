@@ -1,0 +1,19 @@
+<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
+    <a routerLink="/users" class="group flex items-center gap-3 no-underline">
+      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950 text-lg font-black text-lime-300 shadow-lg shadow-slate-950/10">H</span>
+      <span>
+        <span class="block text-lg font-black tracking-tight text-slate-950">HTL Hub</span>
+        <span class="block text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">Workspace</span>
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Hauptnavigation">
+      <a routerLink="/users" routerLinkActive="bg-slate-100 text-slate-950" class="rounded-lg px-4 py-2 text-sm font-bold text-slate-500 transition hover:bg-slate-50 hover:text-slate-950">Users</a>
+      <a routerLink="/login" routerLinkActive="bg-slate-100 text-slate-950" class="rounded-lg px-4 py-2 text-sm font-bold text-slate-500 transition hover:bg-slate-50 hover:text-slate-950">Login</a>
+      <a routerLink="/register" routerLinkActive="bg-slate-100 text-slate-950" class="rounded-lg px-4 py-2 text-sm font-bold text-slate-500 transition hover:bg-slate-50 hover:text-slate-950">Register</a>
+    </nav>
+
+    <a routerLink="/register" class="rounded-lg bg-lime-300 px-4 py-2.5 text-sm font-black text-slate-950 shadow-sm transition hover:bg-lime-200">Get started <span aria-hidden="true">↗</span></a>
+  </div>
+</header>

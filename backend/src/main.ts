@@ -7,6 +7,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
 
   app.setGlobalPrefix('api');
 
@@ -18,15 +19,28 @@ async function bootstrap() {
     }),
   );
 
+  const configuredOrigins = configService.get<string>('CORS_ORIGINS', '');
+  const allowedOrigins = configuredOrigins
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
   app.enableCors({
-    origin: 'http://localhost:4200',
+    origin: (origin, callback) => {
+      const isLocalDevelopmentOrigin =
+        origin === undefined ||
+        /^https?:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin);
+      const isConfiguredOrigin = origin !== undefined && allowedOrigins.includes(origin);
+
+      callback(null, isLocalDevelopmentOrigin || isConfiguredOrigin);
+    },
     credentials: true,
   });
 
   const config = new DocumentBuilder()
     .setTitle('HTL Hub API')
     .setDescription('API for the HTL Hub Multi tool')
-    .setVersion(app.get(ConfigService).getOrThrow<string>('app.version'))
+    .setVersion(configService.getOrThrow<string>('app.version'))
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
